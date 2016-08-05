@@ -2,6 +2,13 @@
 
 # this script is meant to be run once.  It could be bad to run this again
 
+### MLJ: ADDING VERSIONS 
+# NOTE: MAKE SURE THESE LINE UP WITH (1) POM AND (2) src/main/resources
+# CHANGED FROM HADOOP=2.4.1, ACCUMULO=1.6.1, ZOOKEEPER=3.4.8
+HADOOP_VERSION=2.6.4
+ACCUMULO_VERSION=1.6.5
+ZOOKEEPER_VERSION=3.4.8
+
 # internal functions
 _script_dir() {
     if [ -z "${SCRIPT_DIR}" ]; then
@@ -76,7 +83,7 @@ check_ssh() {
 
 setup_hadoop_conf() {
   echo "Setting up Hadoop conf"
-  HADOOP_HOME="${QI_HOME}/hadoop-2.4.1"
+  HADOOP_HOME="${QI_HOME}/hadoop-${HADOOP_VERSION}"
   HADOOP_PREFIX="${HADOOP_HOME}"
   HADOOP_YARN_HOME="${HADOOP_HOME}"
   HADOOP_COMMON_HOME="${HADOOP_HOME}"
@@ -150,7 +157,7 @@ start_hadoop() {
 
 setup_zookeeper_conf() {
   echo "Setting up Zookeeper conf"
-  ZOOKEEPER_HOME="${QI_HOME}/zookeeper-3.4.6"
+  ZOOKEEPER_HOME="${QI_HOME}/zookeeper-${ZOOKEEPER_VERSION}"
   _replace_stuff "QI_ZOOKEEPER_HOME" "${ZOOKEEPER_HOME}" ${ZOOKEEPER_HOME}/bin/zkEnv.sh
   ZOO_DATA="${QI_HOME}/zk-data"
   mkdir -p ${ZOO_DATA}
@@ -165,7 +172,7 @@ start_zookeeper() {
 
 setup_accumulo_conf() {
   echo "Setting up Accumulo conf"
-  ACCUMULO_HOME="${QI_HOME}/accumulo-1.6.1"
+  ACCUMULO_HOME="${QI_HOME}/accumulo-${ACCUMULO_VERSION}"
   echo "Attempting to build Accumulo native libraries"
   EXAMPLE_CONFIG="2GB/native-standalone"
   local return_dir=${PWD}

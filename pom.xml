@@ -3,7 +3,8 @@
   <groupId>com.accumulobook</groupId>
   <artifactId>accumulo-quickinstall</artifactId>
   <packaging>pom</packaging>
-  <version>1.6.1</version>
+  <!-- MLJ: updated from 1.6.1 -->
+  <version>1.6.5</version>
   <description>Create a standalone distribution of the Apache Accumulo
   Project version ${project.version} with dependencies</description>
   <name>AccumuloBook QuickInstall</name>
@@ -21,22 +22,25 @@
   </pluginRepositories>
   <properties>
     <quickinstall.location>${project.build.directory}/archive-tmp</quickinstall.location>
-    <hadoop.version>2.4.1</hadoop.version>
+    <!-- MLJ: updated from 2.4.1 -->
+    <hadoop.version>2.6.4</hadoop.version>
     <hadoop.url>http://archive.apache.org/dist/hadoop/core/hadoop-${hadoop.version}/hadoop-${hadoop.version}.tar.gz</hadoop.url>
-    <hadoop.md5>0ce4cfd282002b7aa42cf71df4145150</hadoop.md5>
-    <zookeeper.version>3.4.6</zookeeper.version>
+    <hadoop.md5>37019f13d7dcd819727be158440b9442</hadoop.md5>
+    <!-- MLJ: updated from 3.4.6 -->
+    <zookeeper.version>3.4.8</zookeeper.version>
     <zookeeper.url>http://archive.apache.org/dist/zookeeper/zookeeper-${zookeeper.version}/zookeeper-${zookeeper.version}.tar.gz</zookeeper.url>
-    <zookeeper.md5>971c379ba65714fd25dc5fe8f14e9ad1</zookeeper.md5>
+    <zookeeper.md5>6bdddcd5179e9c259ef2bf4be2158d18</zookeeper.md5>
     <accumulo.version>${project.version}</accumulo.version>
     <accumulo.url>http://archive.apache.org/dist/accumulo/${accumulo.version}/accumulo-${accumulo.version}-bin.tar.gz</accumulo.url>
-    <accumulo.md5>523d3ab55a6fe2b48c0a1d012f9c2ffc</accumulo.md5>
+    <accumulo.md5>ace93d89eb3ff2fe60b694ec85e671f2</accumulo.md5>
   </properties>
   <build>
     <plugins>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
         <artifactId>download-maven-plugin</artifactId>
-        <version>1.2.0</version>
+        <!-- MLJ: updated from 1.2.0 -->
+        <version>1.3.0</version>
         <executions>
           <execution>
             <id>fetch-hadoop</id>
@@ -81,7 +85,8 @@
       </plugin>
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>2.7</version>
+        <!-- MLJ: update from 2.7 -->
+        <version>3.0.1</version>
         <executions>
           <execution>
             <id>copy-resources</id>
@@ -107,7 +112,8 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
+        <!-- MLJ: updated from 2.4 -->
+        <version>2.6</version>
         <configuration>
           <tarLongFileMode>gnu</tarLongFileMode>
           <descriptors>
